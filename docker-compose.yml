@@ -1,0 +1,45 @@
+version: '3.9'
+services:
+    ideasoft-app:
+        build:
+            context: ./
+            dockerfile: ./Dockerfile
+        ports:
+            - "9080:8080"
+        container_name: ideasoft-app
+        volumes:
+            - ./:/var/www
+        networks:
+            ideasoft-backend:
+    ideasoft-web:
+        build:
+            context: ./
+            dockerfile: ./Dockerfile-nginx
+        ports:
+            - "90:80"
+        container_name: ideasoft-web
+        volumes:
+            - ./:/var/www
+            - ./:/etc/nginx/conf.d/
+        networks:
+            ideasoft-backend:
+    ideasoft-db:
+        image: mysql:latest
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_DATABASE: ideasoft
+            MYSQL_ROOT_PASSWORD: mypassword
+            MYSQL_USER: user
+            MYSQL_PASSWORD: mypassword
+        container_name: ideasoft-db
+        networks:
+            ideasoft-backend:
+networks:
+    ideasoft-backend:
+        driver: bridge
+
+
+
+
+
