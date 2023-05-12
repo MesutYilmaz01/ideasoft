@@ -14,7 +14,7 @@ class CustomerRepository
         return Customer::where($conditions)->first();
     }
 
-    public function add(array $parameters) {
+    public function store(array $parameters) {
         return Customer::create($parameters);
     }
 

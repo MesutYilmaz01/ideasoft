@@ -12,4 +12,8 @@ class Customer extends Model
     protected $casts = [
         'since' => 'datetime:Y/m/d'
     ];
+
+    protected $fillable = [
+        'name', 'since', 'revenue'
+    ];
 }

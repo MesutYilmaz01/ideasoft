@@ -8,7 +8,7 @@ interface ICustomerService
 
     public function getByCondition(array $conditions);
 
-    public function add(array $parameters);
+    public function store(array $parameters);
 
     public function update(int $id, array $parameters);
 

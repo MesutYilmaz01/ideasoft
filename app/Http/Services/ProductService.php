@@ -13,4 +13,24 @@ class ProductService implements IProductService
     {
         $this->productRepository = $productRepository;
     }
+
+    public function getAll() {
+        return $this->productRepository->getAll();
+    }
+
+    public function getByCondition(array $conditions) {
+        return $this->productRepository->getByCondition($conditions);
+    }
+
+    public function store(array $parameters) {
+        return $this->productRepository->store($parameters);
+    }
+
+    public function update(int $id, array $parameters) {
+        return $this->productRepository->update($id, $parameters);
+    }
+
+    public function delete(int $id) {
+        return $this->productRepository->delete($id);
+    }
 }

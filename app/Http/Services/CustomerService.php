@@ -20,11 +20,11 @@ class CustomerService implements ICustomerService
     }
 
     public function getByCondition(array $conditions) {
-        return $this->customerRepository->getAll($conditions);
+        return $this->customerRepository->getByCondition($conditions);
     }
 
-    public function add(array $parameters) {
-        return $this->customerRepository->add($parameters);
+    public function store(array $parameters) {
+        return $this->customerRepository->store($parameters);
     }
 
     public function update(int $id, array $parameters) {
