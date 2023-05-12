@@ -55,6 +55,10 @@ class CustomerController extends Controller
 
     public function delete(int $id)
     {
+        $customer = $this->customerService->getByCondition(['id' => $id]);
+        if(!$customer) {
+            return response('Bu id ile kayıt bulunamadı...',400);
+        }
         $isDeleted = $this->customerService->delete($id);
         if(!$isDeleted) {
             return response('Silme işlemi başarısız...',400);
