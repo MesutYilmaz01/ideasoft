@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Chain\Discount;
+use App\Http\Chain\DiscountTenPercentOverThousand;
+use App\Http\Chain\DiscountBuyFiveGetOne;
+use App\Http\Chain\DiscountCheapestForBuyTwo;
 use App\Http\Contracts\IOrderService;
 use App\Http\Contracts\IProductService;
 use App\Http\Requests\OrderStoreRequest;
 use App\Http\Resources\OrderResource;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -66,5 +71,31 @@ class OrderController extends Controller
             }
         }
         return true;
+    }
+
+    public function calculateDiscount(int $id)
+    {
+        $order = $this->orderService->getByCondition(['id' => $id]);
+        if(!$order) {
+            return response('Bu id ile kayıt bulunamadı...',400);
+        }
+
+        $checkDiscountFirst = new DiscountTenPercentOverThousand();
+        $checkDiscountSecond = new DiscountBuyFiveGetOne();
+        $checkDiscountThird = new DiscountCheapestForBuyTwo();
+
+        $checkDiscountFirst->then($checkDiscountSecond);
+        $checkDiscountSecond->then($checkDiscountThird);
+        $checkDiscountFirst->applyDiscount($order, array());
+        
+        $result = [
+            'orderId' => $id,
+            'discounts' => $order->discount['discounts'] ?? null,
+            'totalDiscount' => $order->discount['totalDiscount'] ?? 0,
+            'discountedTotal' => $order->discount['subtotal'] ?? 0
+        ];
+
+        return response($result, 200);
+
     }
 }

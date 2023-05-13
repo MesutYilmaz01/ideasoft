@@ -38,6 +38,7 @@ Route::prefix('products')->group(function () {
 });
 
 Route::prefix('orders')->group(function () {
+    Route::get("calculateDiscount/{id}", [OrderController::class, "calculateDiscount"]);
     Route::get("getAll", [OrderController::class, "getAll"]);
     Route::get("{id}", [OrderController::class, "get"]);
     Route::post("", [OrderController::class, "store"]);
