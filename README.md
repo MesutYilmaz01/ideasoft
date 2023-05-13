@@ -9,9 +9,9 @@
 
 ## DB Informations
 
-DB_CONNECTION=mysql
-DB_HOST=ideasoft-db
-DB_PORT=3306
-DB_DATABASE=ideasoft
-DB_USERNAME=user
-DB_PASSWORD=mypassword
+- [DB_CONNECTION=mysql]
+- [DB_HOST=ideasoft-db]
+- [DB_PORT=3306]
+- [DB_DATABASE=ideasoft]
+- [DB_USERNAME=user]
+- [DB_PASSWORD=mypassword]
