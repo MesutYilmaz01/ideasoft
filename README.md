@@ -5,6 +5,7 @@
 - [Project coded with Laravel 9.19].
 - [Project environment created with Docker].
 - [MySQL selected as a database.].
+- [Postman collection is in the project.].
 
 
 ## DB Informations
