@@ -22,7 +22,7 @@ class CustomerController extends Controller
     }
 
     public function get(int $id){
-        $customer = $this->customerService->getByCondition(['id' => $id]);
+        $customer = $this->customerService->getById($id);
         if(!$customer) {
             return response('Bu id ile kayıt bulunamadı...',400);
         }
@@ -40,7 +40,7 @@ class CustomerController extends Controller
 
     public function update(int $id, CustomerUpdateRequest $request)
     {
-        $isExists = $this->customerService->getByCondition(['id' => $id]);
+        $isExists = $this->customerService->getById($id);
         
         if(!$isExists) {
             return response('Bu id ile kayıt bulunamadı...',400);
@@ -55,7 +55,7 @@ class CustomerController extends Controller
 
     public function delete(int $id)
     {
-        $customer = $this->customerService->getByCondition(['id' => $id]);
+        $customer = $this->customerService->getById($id);
         if(!$customer) {
             return response('Bu id ile kayıt bulunamadı...',400);
         }

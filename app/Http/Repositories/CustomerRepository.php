@@ -10,8 +10,8 @@ class CustomerRepository
         return Customer::all();
     }
 
-    public function getByCondition(array $conditions) {
-        return Customer::where($conditions)->first();
+    public function getById(int $id) {
+        return Customer::where('id', $id)->first();
     }
 
     public function store(array $parameters) {
@@ -19,10 +19,10 @@ class CustomerRepository
     }
 
     public function update(int $id, array $parameters) {
-        return $this->getByCondition(['id' => $id])->update($parameters);
+        return $this->getById($id)->update($parameters);
     }
 
     public function delete(int $id) {
-        return $this->getByCondition(['id' => $id])->delete();
+        return $this->getById($id)->delete();
     }
 }

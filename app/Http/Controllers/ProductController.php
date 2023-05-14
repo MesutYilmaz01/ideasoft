@@ -23,7 +23,7 @@ class ProductController extends Controller
     }
 
     public function get(int $id){
-        $product = $this->productService->getByCondition(['id' => $id]);
+        $product = $this->productService->getById($id);
         if(!$product) {
             return response('Bu id ile kayıt bulunamadı...',400);
         }
@@ -41,7 +41,7 @@ class ProductController extends Controller
 
     public function update(int $id, ProductUpdateRequest $request)
     {
-        $isExists = $this->productService->getByCondition(['id' => $id]);
+        $isExists = $this->productService->getById($id);
         
         if(!$isExists) {
             return response('Bu id ile kayıt bulunamadı...',400);
@@ -56,7 +56,7 @@ class ProductController extends Controller
 
     public function delete(int $id)
     {
-        $product = $this->productService->getByCondition(['id' => $id]);
+        $product = $this->productService->getById($id);
         if(!$product) {
             return response('Bu id ile kayıt bulunamadı...',400);
         }

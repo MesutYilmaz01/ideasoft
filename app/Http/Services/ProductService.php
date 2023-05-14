@@ -18,8 +18,8 @@ class ProductService implements IProductService
         return $this->productRepository->getAll();
     }
 
-    public function getByCondition(array $conditions) {
-        return $this->productRepository->getByCondition($conditions);
+    public function getById(int $id) {
+        return $this->productRepository->getById($id);
     }
 
     public function store(array $parameters) {

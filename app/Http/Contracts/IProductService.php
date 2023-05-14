@@ -6,7 +6,7 @@ interface IProductService
 {
     public function getAll();
 
-    public function getByCondition(array $conditions);
+    public function getById(int $id);
 
     public function store(array $parameters);
 

@@ -25,14 +25,14 @@ class OrderService implements IOrderService
         return $this->orderRepository->getAll();
     }
 
-    public function getByCondition(array $conditions) {
-        return $this->orderRepository->getByCondition($conditions);
+    public function getById(int $id) {
+        return $this->orderRepository->getById($id);
     }
 
     public function store(OrderStoreRequest $request) {
         $order = $this->orderRepository->store(['customer_id' => $request->input('customer_id')]);
         foreach($request->input('items') as $item) {
-            $product = $this->productRepository->getByCondition(['id' => $item['product_id']]);
+            $product = $this->productRepository->getById($item['product_id']);
             //Add order items.
             $order->order_items()->create([
                 'order_id' => $order->id,
@@ -54,7 +54,7 @@ class OrderService implements IOrderService
 
     public function checkStock(array $items){
         foreach($items as $item){
-            $product = $this->productRepository->getByCondition(['id' => $item['product_id']]);
+            $product = $this->productRepository->getById($item['product_id']);
             if($product->stock < $item["quantity"]) {
                 return false;
             }

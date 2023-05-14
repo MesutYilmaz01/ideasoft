@@ -18,7 +18,7 @@ class DiscountBuyFiveGetOne extends Discount
     {
         foreach($order->order_items as $item)
         {
-            $product = $this->productService->getByCondition(['id' => $item->product_id]);
+            $product = $this->productService->getById($item->product_id);
             if($product->category == 2 && $item->quantity >= 6) {
                 $resultArray['discounts'][] = [
                     'discountReason' => 'BUY_5_GET_1',

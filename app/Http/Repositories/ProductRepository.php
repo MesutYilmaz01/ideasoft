@@ -10,8 +10,8 @@ class ProductRepository
         return Product::all();
     }
 
-    public function getByCondition(array $conditions) {
-        return Product::where($conditions)->first();
+    public function getById(int $id) {
+        return Product::where('id', $id)->first();
     }
 
     public function store(array $parameters) {
@@ -19,10 +19,10 @@ class ProductRepository
     }
 
     public function update(int $id, array $parameters) {
-        return $this->getByCondition(['id' => $id])->update($parameters);
+        return $this->getById($id)->update($parameters);
     }
 
     public function delete(int $id) {
-        return $this->getByCondition(['id' => $id])->delete();
+        return $this->getById($id)->delete();
     }
 }

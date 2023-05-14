@@ -10,8 +10,8 @@ class OrderRepository
         return Order::with('order_items')->get();
     }
 
-    public function getByCondition(array $conditions) {
-        return Order::with('order_items')->where($conditions)->first();
+    public function getById(int $id) {
+        return Order::with('order_items')->where('id', $id)->first();
     }
 
     public function store(array $parameters) {
@@ -19,6 +19,6 @@ class OrderRepository
     }
 
     public function delete(int $id) {
-        return $this->getByCondition(['id' => $id])->delete();
+        return $this->getById($id)->delete();
     }
 }

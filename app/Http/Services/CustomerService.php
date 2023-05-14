@@ -19,8 +19,8 @@ class CustomerService implements ICustomerService
         return $this->customerRepository->getAll();
     }
 
-    public function getByCondition(array $conditions) {
-        return $this->customerRepository->getByCondition($conditions);
+    public function getById(int $id) {
+        return $this->customerRepository->getById($id);
     }
 
     public function store(array $parameters) {

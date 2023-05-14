@@ -18,7 +18,7 @@ class DiscountCheapestForBuyTwo extends Discount
     {
         foreach($order->order_items as $item)
         {
-            $product = $this->productService->getByCondition(['id' => $item->product_id]);
+            $product = $this->productService->getById($item->product_id);
             if($product->category == 1 && $item->quantity >= 2) {
                 $cheapest = $this->getCheapestProduct($order->order_items);
                 $resultArray['discounts'][] = [

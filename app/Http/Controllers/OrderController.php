@@ -23,7 +23,7 @@ class OrderController extends Controller
     }
     
     public function get(int $id){
-        $order = $this->orderService->getByCondition(['id' => $id]);
+        $order = $this->orderService->getById($id);
         if(!$order) {
             return response('Bu id ile kayıt bulunamadı...',400);
         }
@@ -46,7 +46,7 @@ class OrderController extends Controller
 
     public function delete(int $id)
     {
-        $order = $this->orderService->getByCondition(['id' => $id]);
+        $order = $this->orderService->getById($id);
         if(!$order) {
             return response('Bu id ile kayıt bulunamadı...',400);
         }
@@ -59,7 +59,7 @@ class OrderController extends Controller
 
     public function calculateDiscount(int $id)
     {
-        $order = $this->orderService->getByCondition(['id' => $id]);
+        $order = $this->orderService->getById($id);
         if(!$order) {
             return response('Bu id ile kayıt bulunamadı...',400);
         }
