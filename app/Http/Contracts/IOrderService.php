@@ -13,4 +13,8 @@ interface IOrderService
     public function store(OrderStoreRequest $request);
 
     public function delete(int $id);
+
+    public function checkStock(array $items);
+
+    public function calculateDiscount($order);
 }

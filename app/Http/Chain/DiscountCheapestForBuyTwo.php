@@ -28,14 +28,13 @@ class DiscountCheapestForBuyTwo extends Discount
                 ];
                 $resultArray['totalDiscount'] += ($cheapest->unit_price*20)/100;
                 $resultArray['subtotal'] = $resultArray['subtotal'] - (($cheapest->unit_price*20)/100);
-                $order->discount = $resultArray;
                 break;
             }
         }
         return $this->next($order, $resultArray);
     }
 
-    public function getCheapestProduct($items) {
+    private function getCheapestProduct($items) {
         $cheapest = $items[0];
         for($i=1; $i<count($items); $i++) {
             if($items[$i]->unit_price < $cheapest->unit_price) {

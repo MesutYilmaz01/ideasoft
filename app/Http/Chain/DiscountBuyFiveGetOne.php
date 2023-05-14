@@ -27,7 +27,6 @@ class DiscountBuyFiveGetOne extends Discount
                 ];
                 $resultArray['totalDiscount'] += $product->price;
                 $resultArray['subtotal'] = $resultArray['subtotal'] - $product->price;
-                $order->discount = $resultArray;
                 break;
             }
         }

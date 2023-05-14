@@ -16,7 +16,7 @@ abstract class Discount
     abstract function applyDiscount(Order $order, $resultArray);
 
     protected function next(Order $order, $resultArray) {
-        if(!$this->nextDiscount) return;
-        $this->nextDiscount->applyDiscount($order, $resultArray);
+        if(!$this->nextDiscount) return $resultArray;
+        return $this->nextDiscount->applyDiscount($order, $resultArray);
     }
 }

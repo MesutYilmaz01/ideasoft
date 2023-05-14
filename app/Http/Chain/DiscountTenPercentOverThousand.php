@@ -24,7 +24,6 @@ class DiscountTenPercentOverThousand extends Discount
             ];
             $resultArray['totalDiscount'] = $resultArray['subtotal']*10/100;
             $resultArray['subtotal'] = $resultArray['subtotal'] - (($resultArray['subtotal']*10)/100);
-            $order->discount = $resultArray;
         }
         return $this->next($order, $resultArray);
     }
